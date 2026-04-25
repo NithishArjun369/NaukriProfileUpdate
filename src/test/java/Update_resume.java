@@ -29,19 +29,20 @@ public class Update_resume  {
 	public void updateResume() throws AWTException, InterruptedException, IOException {
 		
 		WebDriverManager.chromedriver().setup();
-		ChromeOptions options = new ChromeOptions();
+		/*ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-gpu");
-		WebDriver driver = new ChromeDriver(options);
+		WebDriver driver = new ChromeDriver(options);*/
+		WebDriver driver = new ChromeDriver();
 		
 		Properties properties = new Properties();
 		FileInputStream fis = new FileInputStream("src/test/resources/Config.properties");
 		properties.load(fis);
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5000));
-		WebDriverWait Wait = new WebDriverWait(driver,Duration.ofSeconds(3000));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
 		driver.get(properties.getProperty("url"));
 		driver.manage().window().maximize();
