@@ -57,6 +57,7 @@ public class Update_resume  {
 		
 		driver.get(properties.getProperty("url"));
 		Thread.sleep(3000);
+		driver.manage().deleteAllCookies();
 		driver.navigate().refresh();
 		Thread.sleep(3000);
 		driver.findElement(Locators.Login_Button).click();
