@@ -56,7 +56,7 @@ public class Update_resume  {
 		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
 		driver.get(properties.getProperty("url"));
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		driver.findElement(Locators.Login_Button).click();
 		driver.findElement(Locators.Username).sendKeys(properties.getProperty("Username"));
 		driver.findElement(Locators.Password).sendKeys(properties.getProperty("Password"));
