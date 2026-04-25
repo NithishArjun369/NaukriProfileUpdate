@@ -56,7 +56,10 @@ public class Update_resume  {
 		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
 		driver.get(properties.getProperty("url"));
-		Thread.sleep(5000);
+		Thread.sleep(3000);
+		driver.manage().deleteAllCookies();
+		driver.navigate().refresh();
+		Thread.sleep(3000);
 		driver.findElement(Locators.Login_Button).click();
 		driver.findElement(Locators.Username).sendKeys(properties.getProperty("Username"));
 		driver.findElement(Locators.Password).sendKeys(properties.getProperty("Password"));
@@ -69,6 +72,8 @@ public class Update_resume  {
 		String autoITPath = System.getProperty("user.dir") + "\\src\\test\\resources\\fileupload.exe";
 		ProcessBuilder pb = new ProcessBuilder(autoITPath, resumePath);
 		pb.start();
+		Thread.sleep(5000);  
+		System.out.println("File upload attempted");
 		
 		String LastUpdated = driver.findElement(Locators.Last_Updated).getText();
 		Assert.assertEquals(LastUpdated, "Today");
