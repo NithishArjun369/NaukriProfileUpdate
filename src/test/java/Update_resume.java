@@ -29,14 +29,7 @@ public class Update_resume  {
 	public void updateResume() throws AWTException, InterruptedException, IOException {
 		
 		WebDriverManager.chromedriver().setup();
-		/*ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
-		options.addArguments("--no-sandbox");
-		options.addArguments("--disable-dev-shm-usage");
-		options.addArguments("--disable-gpu");
-		WebDriver driver = new ChromeDriver(options);
-		WebDriver driver = new ChromeDriver();*/
-		
+
 		//Disable Notifications
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--no-first-run");
@@ -57,22 +50,17 @@ public class Update_resume  {
 		
 		driver.get(properties.getProperty("url"));
 		Thread.sleep(3000);
-		driver.manage().deleteAllCookies();
-		driver.navigate().refresh();
-		Thread.sleep(3000);
 		driver.findElement(Locators.Login_Button).click();
 		driver.findElement(Locators.Username).sendKeys(properties.getProperty("Username"));
 		driver.findElement(Locators.Password).sendKeys(properties.getProperty("Password"));
 		driver.findElement(Locators.Login_continue_Button).click();
 		Wait.until(ExpectedConditions.elementToBeClickable(Locators.View_Profile)).click();
-		driver.findElement(Locators.Update_resume_Button).click();
 		Thread.sleep(2000);
 		
 		String resumePath = System.getProperty("user.dir") + "\\src\\test\\resources\\Nithish_QA.pdf";
-		String autoITPath = System.getProperty("user.dir") + "\\src\\test\\resources\\fileupload.exe";
-		ProcessBuilder pb = new ProcessBuilder(autoITPath, resumePath);
-		pb.start();
-		Thread.sleep(5000);  
+		driver.findElement(Locators.File_Input).sendKeys(resumePath);
+		
+		Thread.sleep(3000);  
 		System.out.println("File upload attempted");
 		
 		String LastUpdated = driver.findElement(Locators.Last_Updated).getText();
