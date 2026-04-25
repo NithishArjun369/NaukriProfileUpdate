@@ -34,18 +34,29 @@ public class Update_resume  {
 		options.addArguments("--no-sandbox");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-gpu");
-		WebDriver driver = new ChromeDriver(options);*/
-		WebDriver driver = new ChromeDriver();
+		WebDriver driver = new ChromeDriver(options);
+		WebDriver driver = new ChromeDriver();*/
+		
+		//Disable Notifications
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--no-first-run");
+		options.addArguments("--no-default-browser-check");
+		options.addArguments("--disable-default-apps");
+		options.addArguments("--disable-notifications");
+		options.addArguments("--disable-extensions");
+		options.addArguments("--start-maximized");
+		options.addArguments("--incognito");
+		WebDriver driver = new ChromeDriver(options);
 		
 		Properties properties = new Properties();
-		FileInputStream fis = new FileInputStream("src/test/resources/Config.properties");
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/src/test/resources/Config.properties");
 		properties.load(fis);
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
 		driver.get(properties.getProperty("url"));
-		driver.manage().window().maximize();
+		Thread.sleep(3000);
 		driver.findElement(Locators.Login_Button).click();
 		driver.findElement(Locators.Username).sendKeys(properties.getProperty("Username"));
 		driver.findElement(Locators.Password).sendKeys(properties.getProperty("Password"));
