@@ -65,8 +65,8 @@ public class Update_resume  {
 		driver.findElement(Locators.Update_resume_Button).click();
 		Thread.sleep(2000);
 		
-		String resumePath = System.getProperty("user.dir") + "/Nithish_QA.pdf";
-		String autoITPath = System.getProperty("user.dir") + "/fileupload.exe";
+		String resumePath = System.getProperty("user.dir") + "\\src\\test\\resources\\Nithish_QA.pdf";
+		String autoITPath = System.getProperty("user.dir") + "\\src\\test\\resources\\fileupload.exe";
 		ProcessBuilder pb = new ProcessBuilder(autoITPath, resumePath);
 		pb.start();
 		
