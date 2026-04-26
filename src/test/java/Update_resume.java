@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
+import java.io.File;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -51,13 +52,18 @@ public class Update_resume  {
 		driver.get(properties.getProperty("url"));
 		Thread.sleep(3000);
 		driver.findElement(Locators.Login_Button).click();
-		driver.findElement(Locators.Username).sendKeys(properties.getProperty("Username"));
-		driver.findElement(Locators.Password).sendKeys(properties.getProperty("Password"));
+		String username = System.getenv("NAUKRI_USERNAME") != null? System.getenv("NAUKRI_USERNAME") : properties.getProperty("Username");
+		String password = System.getenv("NAUKRI_PASSWORD") != null ? System.getenv("NAUKRI_PASSWORD") : properties.getProperty("Password");
+		driver.findElement(Locators.Username).sendKeys(username);
+		driver.findElement(Locators.Password).sendKeys(password);
 		driver.findElement(Locators.Login_continue_Button).click();
 		Wait.until(ExpectedConditions.elementToBeClickable(Locators.View_Profile)).click();
 		Thread.sleep(2000);
 		
-		String resumePath = System.getProperty("user.dir") + "\\src\\test\\resources\\Nithish_QA.pdf";
+		String resumePath = System.getProperty("user.dir") + File.separator + "src" 
+                  + File.separator + "test" 
+                  + File.separator + "resources" 
+                  + File.separator + "Nithish_QA.pdf";
 		driver.findElement(Locators.File_Input).sendKeys(resumePath);
 		
 		Thread.sleep(3000);  
