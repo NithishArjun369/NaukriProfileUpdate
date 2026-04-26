@@ -70,7 +70,7 @@ public class Update_resume  {
     }
 	
 	@Test
-	public void updateResume() throws AWTException, InterruptedException, IOException {
+	public void updateResume() throws InterruptedException, IOException {
 		
 		WebDriverManager.chromedriver().setup();
 
