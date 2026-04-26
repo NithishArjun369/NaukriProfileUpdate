@@ -10,5 +10,6 @@ public class Locators {
 	public static final By View_Profile = By.xpath("(//a[contains(text(),'View')])[1]");
 	public static final By File_Input = By.id("attachCV");
 	public static final By Last_Updated = By.cssSelector("span.mod-date-val");
+	public static final By GotIt_PopUp_Button = By.xpath("//button[text()='Got it']")
 
 }
