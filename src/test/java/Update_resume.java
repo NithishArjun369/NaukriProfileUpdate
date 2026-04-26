@@ -56,8 +56,7 @@ public class Update_resume  {
 		driver.get(properties.getProperty("url"));
 		Thread.sleep(8000);
 		try {
-    WebElement cookieButton = driver.findElement(By.xpath("//button[text()='Got it']"));
-    cookieButton.click();
+  driver.findElement(Locators.GotIt_PopUp_Button).click();
     System.out.println("Cookie popup closed!");
     Thread.sleep(2000);
 } catch(Exception e) {
