@@ -21,6 +21,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
+import org.apache.commons.io.FileUtils;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
@@ -50,7 +54,10 @@ public class Update_resume  {
 		WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
 		driver.get(properties.getProperty("url"));
-		Thread.sleep(3000);
+		Thread.sleep(8000);
+		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+FileUtils.copyFile(screenshot, new File("page_screenshot.png"));
+System.out.println("Screenshot taken!");
 		driver.findElement(Locators.Login_Button).click();
 		String username = System.getenv("NAUKRI_USERNAME") != null? System.getenv("NAUKRI_USERNAME") : properties.getProperty("Username");
 		String password = System.getenv("NAUKRI_PASSWORD") != null ? System.getenv("NAUKRI_PASSWORD") : properties.getProperty("Password");
