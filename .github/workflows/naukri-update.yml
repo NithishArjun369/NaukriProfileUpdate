@@ -33,3 +33,4 @@ jobs:
           path: |
             page_screenshot.png
             after_login.png
+            after_upload.png
