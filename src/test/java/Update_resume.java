@@ -71,6 +71,10 @@ System.out.println("Screenshot taken!");
 		driver.findElement(Locators.Username).sendKeys(username);
 		driver.findElement(Locators.Password).sendKeys(password);
 		driver.findElement(Locators.Login_continue_Button).click();
+		Thread.sleep(5000);
+		File screenshot2 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+FileUtils.copyFile(screenshot2, new File("after_login.png"));
+System.out.println("After login screenshot taken!");
 		Wait.until(ExpectedConditions.elementToBeClickable(Locators.View_Profile)).click();
 		Thread.sleep(2000);
 		
