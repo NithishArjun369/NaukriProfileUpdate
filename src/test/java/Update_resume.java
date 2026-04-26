@@ -55,6 +55,14 @@ public class Update_resume  {
 		
 		driver.get(properties.getProperty("url"));
 		Thread.sleep(8000);
+		try {
+    WebElement cookieButton = driver.findElement(By.xpath("//button[text()='Got it']"));
+    cookieButton.click();
+    System.out.println("Cookie popup closed!");
+    Thread.sleep(2000);
+} catch(Exception e) {
+    System.out.println("No cookie popup found, continuing...");
+}
 		File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 FileUtils.copyFile(screenshot, new File("page_screenshot.png"));
 System.out.println("Screenshot taken!");
